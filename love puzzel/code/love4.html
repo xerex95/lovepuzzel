@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Love Puzzle</title>
+    <style>
+        body {
+            font-family: Algerian, sans-serif;
+            text-align: center;
+        }
+        .hidden {
+            display: none;
+        }
+        #puzzle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+        }
+        #puzzle img {
+            border: 2px solid #f00; /* Adding a red border */
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+        }
+        #puzzle img:hover {
+            border-color: #ff0000; /* Changing border color on hover */
+        }
+        #message.animated {
+            animation: bounce 0.5s ease infinite alternate;
+            padding: 280px; /* Adding padding for better visibility */
+        }
+        @keyframes bounce {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 id="title">Love Puzzle</h1>
+    <p id="instruction">Click on the right image to reveal the message!</p>
+    <div id="puzzle">
+        <img src="C:\Users\DELL\Downloads\heart.ico" id="heart" onclick="revealMessage()">
+        <img src="C:\Users\DELL\Desktop\images.png" id="cake" onclick="wrongChoice()">
+        <img src="C:\Users\DELL\Downloads\allien.png" id="allien" onclick="wrongChoice()">
+        <img src="C:\Users\DELL\Desktop\images.jpg" id="moon" onclick="wrongChoice()">
+    </div>
+    <p id="message" class="hidden">Tu Hamar jaan hai re...</p>
+
+    <script>
+        function revealMessage() {
+            // Hide the puzzle images
+            document.getElementById("heart").style.display = "none";
+            document.getElementById("cake").style.display = "none";
+            document.getElementById("allien").style.display = "none";
+            document.getElementById("moon").style.display = "none";
+
+            // Show the hidden message with animation class
+            const messageElement = document.getElementById("message");
+            messageElement.style.display = "block";
+            messageElement.classList.add("animated");
+
+            // Hide the instruction text
+            const instructionElement = document.getElementById("instruction");
+            instructionElement.style.display = "none";
+
+            // Hide the title
+            const titleElement = document.getElementById("title");
+            titleElement.style.display = "none";
+        }
+
+        function wrongChoice() {
+            alert("Oops! That's not the right choice. Keep trying!");
+        }
+    </script>
+</body>
+</html>
